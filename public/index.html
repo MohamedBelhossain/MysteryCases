@@ -1,89 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Mystery Cases</title>
-  <link rel="stylesheet" href="/index.css" />
+  <link rel="stylesheet" href="/index.css"/>
 </head>
 <body>
   <div class="container">
-     <header>
-    <nav>
-      <h1>Mystery <span>Cases</span></h1>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="cases.html">Buy Cases</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-    </nav>
-  </header>
-
+    <header>
+      <nav class="nav-container">
+        <h1>Mystery <span>Cases</span></h1>
+        <!-- Hamburger menu -->
+        <button id="menu-toggle" aria-label="Menu" aria-expanded="false">
+          &#9776;
+        </button>
+        <ul id="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="cases.html">Buy Cases</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </header>
 
     <main>
-    <!-- page 1-->
-<section id="home">
-      <section class="section1">
-        <div class="overlay">
-          <h2 class="hero-text-bottom">
-            The Murder Mystery Game That Lets You Be a Cold Case Detective
-          </h2>
-          <a href="#" class="btn-shop">SHOP AVAILABLE CASES</a>
-        </div>
-      </section>
+      <section id="home">
+        <section class="section1">
+          <div class="overlay">
+            <h2 class="hero-text-bottom">
+              The Murder Mystery Game That Lets You Be a Cold Case Detective
+            </h2>
+            <a href="#" class="btn-shop">SHOP AVAILABLE CASES</a>
+          </div>
+        </section>
 
+        <section class="section2">
+          <h1>A new case is coming soon...</h1>
+          <h2>stay <span>tuned!</span></h2>
+        </section>
 
-      <section class="section2">
-        <h1>A new case is coming soon...</h1>
-        <h2>stay <span>tuned!</span></h2>
-      </section>
+        <section class="section3-order">
+          <div class="guide">
+            <h1>HOW TO PLAY THE GAME</h1>
+            <article><h2>EXPLORE THE CASE FILE</h2><p>Read the cold case file including all documents, photographs, newspaper clippings and other items.</p></article>
+            <article><h2>COMPLETE THE CHALLENGES</h2><p>Solve the objectives to move through the case and get more evidence you need to convict the killer.</p></article>
+            <article><h2>USE THE ONLINE ANSWER KEYS</h2><p>Check your theories with the online answer keys, or get helpful hints to keep digging.</p></article>
+            <article><h2>SOLVE THE CASE AND CLAIM VICTORY!</h2><p>Finish the final challenge, close the case, and bring the culprit to justice!</p></article>
+          </div>
+          <div class="order-section">
+            <h2>READY TO SOLVE A CRIME?</h2>
+            <p>Found a case that intrigues you? Contact us directly on WhatsApp to place your order.</p>
+            <a href="https://wa.me/212648960757" target="_blank" rel="noopener" class="whatsapp-button">Order on WhatsApp</a>
+          </div>
+        </section>
 
-      <section class="section3-order">
-        <div class="guide">
-          <h1>HOW TO PLAY THE GAME</h1>
-
-          <article>
-            <h2>EXPLORE THE CASE FILE</h2>
-            <p>Read the cold case file including all documents, photographs, newspaper clippings and other items.</p>
-          </article>
-
-          <article>
-            <h2>COMPLETE THE CHALLENGES</h2>
-            <p>Solve the objectives to move through the case and get more evidence you need to convict the killer.</p>
-          </article>
-
-          <article>
-            <h2>USE THE ONLINE ANSWER KEYS</h2>
-            <p>Check your theories with the online answer keys, or get helpful hints to keep digging.</p>
-          </article>
-
-          <article>
-            <h2>SOLVE THE CASE AND CLAIM VICTORY!</h2>
-            <p>Finish the final challenge, close the case, and bring the culprit to justice!</p>
-          </article>
-        </div>
-
-        <div class="order-section">
-          <h2>READY TO SOLVE A CRIME?</h2>
-          <p>Found a case that intrigues you? Contact us directly on WhatsApp to place your order.</p>
-          <a href="https://wa.me/212648960757" target="_blank" rel="noopener" class="whatsapp-button">Order on WhatsApp</a>
-        </div>
-      </section>
-
-    
-      <section class="contact">
-        <h1>GET NOTIFIED ABOUT NEW CASES TO SOLVE</h1>
-
-        <div class="email-box">
-          <form id="emailForm">
-            <label for="emailInput">Email Address</label>
-            <input type="email" id="emailInput" placeholder="Enter your email" required />
-            <button type="submit">Submit</button>
-          </form>
-          <p id="responseMsg"></p>
-        </div>
-      </section>
+        <section class="contact">
+          <h1>GET NOTIFIED ABOUT NEW CASES TO SOLVE</h1>
+          <div class="email-box">
+           <form id="emailForm" onsubmit="saveEmail(event)">
+              <label for="emailInput">Email Address</label>
+              <input type="email" id="emailInput" placeholder="Enter your email" required/>
+              <button type="submit">Submit</button>
+            </form>
+            <p id="responseMsg"></p>
+          </div>
+        </section>
       </section>
     </main>
 
@@ -91,28 +73,57 @@
       <p>&copy; 2025 Mystery Cases. All rights reserved.</p>
     </footer>
   </div>
- <!-- Bouton flottant Support -->
-<button id="support-button" onclick="toggleSupport()">Support</button>
 
-<!-- Fenêtre de support -->
-<div id="support-box">
-  <div class="support-header">
-    <span>Support</span>
-    <span class="close" onclick="toggleSupport()">&times;</span>
+  <!-- Bouton flottant Support -->
+  <button id="support-button" onclick="toggleSupport()">Support</button>
+
+  <!-- Fenêtre de support -->
+  <div id="support-box">
+    <div class="support-header">
+      <span>Support</span>
+      <span class="close" onclick="toggleSupport()">&times;</span>
+    </div>
+    <form id="support-form" onsubmit="sendSupport(event)">
+      <label for="email">Votre Email :</label>
+      <input type="email" id="email" required placeholder="exemple@mail.com"/>
+      <label for="message">Votre Message :</label>
+      <textarea id="message" required placeholder="Décrivez votre problème..."></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
   </div>
-  <form id="support-form" onsubmit="sendSupport(event)">
-    <label for="email">Votre Email :</label>
-    <input type="email" id="email" required placeholder="exemple@mail.com">
-    
-    <label for="message">Votre Message :</label>
-    <textarea id="message" required placeholder="Décrivez votre problème..."></textarea>
-    
-    <button type="submit">Envoyer</button>
-  </form>
-</div>
+<script>
 
+function saveEmail(e) {
+  e.preventDefault();
 
-<script src="/index.js"></script>
+  const emailField = document.getElementById('emailInput');
+  if (!emailField) return;
 
+  const email = emailField.value.trim();
+  if (!email) {
+    return alert("Veuillez entrer un email.");
+  }
+
+  fetch('/api/save-email', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email })
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        alert(data.message || "Email envoyé !");
+        emailField.value = '';
+      } else {
+        alert(data.error || "Une erreur s'est produite.");
+      }
+    })
+    .catch(err => {
+      alert("Erreur serveur.");
+      console.error(err);
+    });
+}
+</script>
+  <script src="/commun.js"></script>
 </body>
 </html>

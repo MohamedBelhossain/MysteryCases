@@ -1,24 +1,52 @@
-import fs from 'fs';
-import path from 'path';
+import nodemailer from 'nodemailer';
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   const { email } = req.body;
-  if (!email) {
-    return res.status(400).json({ error: 'Email is required' });
-  }
+  console.log('Received support request:', { email});
 
-  const entry = `${email}\n`;
-  const filePath = path.join(process.cwd(), 'emails.txt');
+  if (!email) {
+    return res.status(400).json({ error: 'Missing fields.' });
+  }
 
   try {
-    fs.appendFileSync(filePath, entry);
-  } catch (err) {
-    return res.status(500).json({ error: 'Error saving email' });
-  }
+   const transporter = nodemailer.createTransport({
+  host: process.env.EMAIL_HOST,
+  port: parseInt(process.env.EMAIL_PORT, 10),
+  secure: process.env.EMAIL_PORT === '465', 
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+  tls: {
+    rejectUnauthorized: false, 
+  },
+});
 
-  res.status(200).json({ message: 'Email saved successfully!' });
+
+    const mailOptions = {
+      from: `"Mystery Cases subscription" <${process.env.EMAIL_USER}>`,
+      to: process.env.EMAIL_USER,
+      subject: `Subscription from ${email}`,
+      replyTo: email,
+    };
+
+    const info = await transporter.sendMail(mailOptions);
+
+    console.log('Message sent: %s', info.messageId);
+    res.status(200).json({
+  success: true,
+ message: 'Message sent successfully.' });
+
+  } catch (error) {
+    console.error('Error sending email:', error);
+   return res.status(500).json({
+  success: false,
+  error: 'Échec de l’envoi du message.'
+});
+  }
 }
+
