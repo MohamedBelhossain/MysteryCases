@@ -8,13 +8,9 @@ const PORT = 3000;
 app.use(express.json());
 
 
-app.use('/public', express.static(path.join(__dirname, 'public'))); 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use('/src', express.static(path.join(__dirname, 'src')));    
 
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
 
 app.post('/api/save-email', (req, res) => {
   const { email } = req.body;
@@ -30,11 +26,12 @@ app.post('/api/save-email', (req, res) => {
     res.status(200).json({ message: 'Email saved successfully!' });
   });
 });
-app.post('/support', (req, res) => {
+app.post('/api/support', (req, res) => {
   const { email, message } = req.body;
   if (!email || !message) {
     return res.status(400).json({ error: 'Champs manquants.' });
   }
+
   const supportEntry = {
     email,
     message,
@@ -46,7 +43,10 @@ app.post('/support', (req, res) => {
 
   try {
     if (fs.existsSync(filePath)) {
-      existing = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+      const fileContent = fs.readFileSync(filePath, 'utf8');
+      if (fileContent) {
+        existing = JSON.parse(fileContent);
+      }
     }
   } catch (err) {
     console.error('Erreur lecture fichier:', err);

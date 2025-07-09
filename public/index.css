@@ -71,7 +71,7 @@ main {
 
 
 .section1 {
-  background: url('/public/images/newpic.png') no-repeat center center;
+  background: url('/images/newpic.png') no-repeat center center;
   background-size: cover;
   height: 600px;
   position: relative;
@@ -116,7 +116,7 @@ main {
 
 
 .section2 {
-  background: url('/public/images/pic3.png') no-repeat center center;
+  background: url('/images/pic3.png') no-repeat center center;
   background-size: cover;
   text-align: center;
   padding: 50px 20px;

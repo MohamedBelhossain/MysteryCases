@@ -22,7 +22,7 @@ function sendSupport(e) {
   const message = document.getElementById('message').value.trim();
 
   if (email && message) {
-    fetch('/support', {
+    fetch('/api/support', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
