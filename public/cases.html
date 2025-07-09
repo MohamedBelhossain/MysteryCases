@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mystery Cases – Enquêtes Criminelles</title>
+  <style>
+    /* === Style Global === */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #111;
+      color: #f5f5f5;
+    }
+
+    /* === En-tête et Navigation === */
+   header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #1f1f1f;
+  padding: 15px 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+}
+
+nav {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 15px;
+}
+
+nav h1 {
+  font-weight: 700;
+  font-size: 24px;
+  color: #fff;
+}
+
+nav h1 span {
+  color: #e63946;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 150px;
+}
+
+nav ul li a {
+  color: #ccc;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #e63946;
+}
+
+    /* === Contenu Principal === */
+    main.cases-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 100px 20px 40px;
+    }
+
+    .case-card {
+      background-color: #1e1e1e;
+      border-left: 5px solid crimson;
+      padding: 20px;
+      width: 300px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .case-card:hover {
+      transform: scale(1.03);
+    }
+
+    .case-card h2 {
+      color: #eaeaea;
+      margin-top: 0;
+    }
+
+    .case-card p {
+      color: #bbb;
+      margin-bottom: 20px;
+    }
+
+    .case-card button {
+      background-color: crimson;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .case-card button:hover {
+      background-color: #a60000;
+    }
+   /* Bouton Support  */
+#support-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #e63946;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Fenêtre du support */
+#support-box {
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 300px;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+  z-index: 9999;
+  padding: 15px;
+  color: white;
+}
+
+/* Header */
+.support-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+/* Close button */
+.support-header .close {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* Formulaire */
+#support-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#support-form input,
+#support-form textarea {
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  background-color: #2d2d2d;
+  color: white;
+  resize: none;
+}
+
+#support-form button {
+  background-color: #e63946;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#support-form button:hover {
+  background-color: #c42b39;
+}
+
+  </style>
+</head>
+
+<body>
+  <!--  Barre de navigation  -->
+
+     <header>
+    <nav>
+      <h1>Mystery <span>Cases</span></h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="cases.html">Buy Cases</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <!--  Dossiers Mystères -->
+  <main class="cases-container">
+    <div class="case-card">
+      <h2>Le Silence de la Forêt</h2>
+      <p>Une disparition étrange dans une forêt interdite... Saurez-vous percer le secret ?</p>
+      <button>Commencer l’enquête</button>
+    </div>
+
+    <div class="case-card">
+      <h2>L’Ombre du Passé</h2>
+      <p>Un meurtre non résolu datant de 1982 refait surface. Les indices vous attendent.</p>
+      <button>Ouvrir le dossier</button>
+    </div>
+
+    <div class="case-card">
+      <h2>Le Tueur au Journal</h2>
+      <p>Un tueur en série laisse des indices dans la presse. À vous de les décrypter.</p>
+      <button>Enquêter</button>
+    </div>
+  </main>
+  <!-- Bouton Support -->
+<button id="support-button" onclick="toggleSupport()">Support</button>
+
+<!-- Fenêtre de support -->
+<div id="support-box">
+  <div class="support-header">
+    <span>Support</span>
+    <span class="close" onclick="toggleSupport()">&times;</span>
+  </div>
+  <form id="support-form" onsubmit="sendSupport(event)">
+    <label for="email">Votre Email :</label>
+    <input type="email" id="email" required placeholder="exemple@mail.com">
+    
+    <label for="message">Votre Message :</label>
+    <textarea id="message" required placeholder="Décrivez votre problème..."></textarea>
+    
+    <button type="submit">Envoyer</button>
+  </form>
+</div>
+
+<script>
+function toggleSupport() {
+  const box = document.getElementById('support-box');
+  box.style.display = (box.style.display === 'block') ? 'none' : 'block';
+}
+
+function sendSupport(e) {
+  e.preventDefault();
+
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+
+  if (email && message) {
+    fetch('/support', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, message })
+    })
+    .then(res => res.json())
+    .then(data => {
+      alert(data.message || "Message envoyé !");
+      document.getElementById('support-form').reset();
+      toggleSupport();
+    })
+    .catch(err => {
+      alert("Erreur serveur.");
+      console.error(err);
+    });
+  } else {
+    alert("Veuillez remplir tous les champs.");
+  }
+}
+
+
+</script>
+
+</body>
+</html>

@@ -30,6 +30,40 @@ app.post('/api/save-email', (req, res) => {
     res.status(200).json({ message: 'Email saved successfully!' });
   });
 });
+app.post('/support', (req, res) => {
+  const { email, message } = req.body;
+  if (!email || !message) {
+    return res.status(400).json({ error: 'Champs manquants.' });
+  }
+  const supportEntry = {
+    email,
+    message,
+    date: new Date().toISOString()
+  };
+
+  const filePath = path.join(__dirname, 'support.json');
+  let existing = [];
+
+  try {
+    if (fs.existsSync(filePath)) {
+      existing = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    }
+  } catch (err) {
+    console.error('Erreur lecture fichier:', err);
+    return res.status(500).json({ error: 'Erreur serveur.' });
+  }
+
+  existing.push(supportEntry);
+
+  try {
+    fs.writeFileSync(filePath, JSON.stringify(existing, null, 2));
+  } catch (err) {
+    console.error('Erreur écriture fichier:', err);
+    return res.status(500).json({ error: 'Erreur serveur.' });
+  }
+
+  res.json({ success: true, message: 'Message enregistré.' });
+});
 
 
 app.listen(PORT, () => console.log(`✅ Server running on http://localhost:${PORT}`));

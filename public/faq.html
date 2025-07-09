@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAQ - Mystery Cases</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #f5f5f5;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+   header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #1f1f1f;
+  padding: 15px 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+}
+
+nav {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 15px;
+}
+
+nav h1 {
+  font-weight: 700;
+  font-size: 24px;
+  color: #fff;
+}
+
+nav h1 span {
+  color: #e63946;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 150px;
+}
+
+nav ul li a {
+  color: #ccc;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #e63946;
+}
+    main {
+      padding: 100px 20px 40px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h2 {
+      color: #e63946;
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+    .faq-item {
+      margin-bottom: 20px;
+    }
+    .faq-question {
+      font-weight: bold;
+      font-size: 18px;
+      cursor: pointer;
+      color: #f5f5f5;
+      background-color: #2a2a2a;
+      padding: 12px 15px;
+      border-radius: 5px;
+      user-select: none;
+    }
+    .faq-answer {
+      background-color: #1e1e1e;
+      padding: 15px 20px;
+      margin-top: 5px;
+      border-radius: 5px;
+      display: none;
+      color: #ccc;
+      line-height: 1.5;
+    }
+      /* Bouton Support flottant */
+#support-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #e63946;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Fenêtre du support */
+#support-box {
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 300px;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+  z-index: 9999;
+  padding: 15px;
+  color: white;
+}
+
+/* Header */
+.support-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+/* Close button */
+.support-header .close {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* Formulaire */
+#support-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#support-form input,
+#support-form textarea {
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  background-color: #2d2d2d;
+  color: white;
+  resize: none;
+}
+
+#support-form button {
+  background-color: #e63946;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#support-form button:hover {
+  background-color: #c42b39;
+}
+
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const questions = document.querySelectorAll(".faq-question");
+      questions.forEach(q => {
+        q.addEventListener("click", () => {
+          const answer = q.nextElementSibling;
+          if (answer.style.display === "block") {
+            answer.style.display = "none";
+          } else {
+            answer.style.display = "block";
+          }
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <nav>
+      <h1>Mystery <span>Cases</span></h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="cases.html">Buy Cases</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-question">How do I buy a case?</div>
+      <div class="faq-answer">
+        You can purchase cases directly from the "Buy Cases" page by selecting the case you want and following the payment instructions.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Can I share my investigation progress with friends?</div>
+      <div class="faq-answer">
+        Yes, you can share your progress by sharing the unique link generated for each case.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">What happens if I get stuck on a clue?</div>
+      <div class="faq-answer">
+        Don’t worry! You can use hints provided within each case or contact our support team for assistance.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Is my personal data safe?</div>
+      <div class="faq-answer">
+        Absolutely. We use the latest security standards to protect your data and never share it with third parties.
+      </div>
+    </div>
+  </main>
+   <!-- Bouton flottant Support -->
+<button id="support-button" onclick="toggleSupport()">Support</button>
+
+<!-- Fenêtre de support -->
+<div id="support-box">
+  <div class="support-header">
+    <span>Support</span>
+    <span class="close" onclick="toggleSupport()">&times;</span>
+  </div>
+  <form id="support-form" onsubmit="sendSupport(event)">
+    <label for="email">Votre Email :</label>
+    <input type="email" id="email" required placeholder="exemple@mail.com">
+    
+    <label for="message">Votre Message :</label>
+    <textarea id="message" required placeholder="Décrivez votre problème..."></textarea>
+    
+    <button type="submit">Envoyer</button>
+  </form>
+</div>
+
+<script>
+function toggleSupport() {
+  const box = document.getElementById('support-box');
+  box.style.display = (box.style.display === 'block') ? 'none' : 'block';
+}
+
+function sendSupport(e) {
+  e.preventDefault();
+
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+
+  if (email && message) {
+    fetch('/support', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, message })
+    })
+    .then(res => res.json())
+    .then(data => {
+      alert(data.message || "Message envoyé !");
+      document.getElementById('support-form').reset();
+      toggleSupport();
+    })
+    .catch(err => {
+      alert("Erreur serveur.");
+      console.error(err);
+    });
+  } else {
+    alert("Veuillez remplir tous les champs.");
+  }
+}
+
+
+</script>
+</body>
+</html>
