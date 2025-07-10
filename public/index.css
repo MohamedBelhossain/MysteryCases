@@ -99,12 +99,15 @@ main {
 
 .section1 .overlay {
   width: 100%;
+  padding:20px;
   max-width: 700px;
   color: #ffffffcd;
   text-align: center;
   border-radius: 8px;
 }
-
+  .hero-text-bottom{
+    padding-bottom: 10px;
+  }
 .btn-shop {
   padding: 10px 30px;
   background: #e63946;
@@ -120,7 +123,7 @@ main {
 }
 
 .section2 {
-  background: url('/images/pic3.png') center/cover no-repeat;
+  background: url('/images/pic.png') center/cover no-repeat;
   background-color: #222;
   text-align: center;
   padding: 50px 20px;
@@ -530,15 +533,22 @@ main.cases-container {
   }
 
   .section1 {
-    height: 300px;
+    height: 400px;
+    padding:25px;
   }
 
   .section1 .overlay {
-    margin-top: 50px;
-    max-width: 90%;
+    font-size: 13px;
+    max-width: 100%;
+    padding: 10px;;
   }
+  .hero-text-bottom{
+    padding-bottom: 10px;
+  }
+.btn-shop{
+padding:10px;
+}
 
-  .btn-shop,
   .whatsapp-button {
     width: 100%;
     padding: 12px 0;
